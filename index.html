@@ -2,15 +2,21 @@
 <html>
 <head>
     <title>India Forest Monitoring Dashboard</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
-            margin-top: 20px;
+            background-color: #1f4e79;
+            color: white;
+            padding: 15px;
+            margin: 0;
         }
 
         .controls {
@@ -18,26 +24,31 @@
         }
 
         select {
-            padding: 8px;
+            padding: 8px 12px;
             font-size: 16px;
             margin: 10px;
+            border-radius: 6px;
+            border: 1px solid #999;
         }
 
         iframe {
             width: 95%;
-            height: 600px;
-            border: 2px solid #444;
+            height: 650px;
+            border: 2px solid #333;
             border-radius: 8px;
             background: white;
+            margin-bottom: 20px;
         }
     </style>
 </head>
+
 <body>
 
 <h1>India Forest & Adaptive Monitoring Dashboard</h1>
 
 <div class="controls">
-    <label>Select State:</label>
+
+    <label><b>Select State:</b></label>
     <select id="stateSelect">
         <option value="">-- Select State --</option>
         <option value="ap">Andhra Pradesh</option>
@@ -71,17 +82,19 @@
         <option value="wb">West Bengal</option>
     </select>
 
-    <label>Select Map Type:</label>
+    <label><b>Select Map Type:</b></label>
     <select id="mapType">
         <option value="">-- Select Map --</option>
         <option value="forest">Forest</option>
         <option value="adaptive">Adaptive</option>
     </select>
+
 </div>
 
 <iframe id="mapFrame"></iframe>
 
 <script>
+
     const stateSelect = document.getElementById("stateSelect");
     const mapType = document.getElementById("mapType");
     const mapFrame = document.getElementById("mapFrame");
@@ -91,13 +104,14 @@
         const type = mapType.value;
 
         if (state && type) {
-            const filePath = "maps/" + state + "_" + type + ".html";
+            const filePath = state + "_" + type + ".html";
             mapFrame.src = filePath;
         }
     }
 
     stateSelect.addEventListener("change", loadMap);
     mapType.addEventListener("change", loadMap);
+
 </script>
 
 </body>
